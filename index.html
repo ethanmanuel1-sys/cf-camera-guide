@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Christ Fellowship Camera Guide for the broadcast camera team.">
+<meta property="og:title" content="Christ Fellowship Camera Guide">
+<meta property="og:description" content="Worship first. Capture second. The CF Miami camera team guide.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://ethanmanuel1-sys.github.io/cf-camera-guide/share.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<title>Christ Fellowship Camera Guide</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap">
+<style>
+/* Layout: a navy broadcast masthead, a sticky section rail, one reading column; cameras live in a tally-lit tab strip. */
+:root{
+  --band:#002855; --band-ink:#FFFFFF; --band-soft:#BBDDE6;
+  --bg:#F3F7FA; --surface:#FFFFFF; --sunk:#E9F1F6;
+  --ink:#101820; --muted:#566673; --line:#D8E3EA;
+  --accent:#007BB0; --accent-fill:#009CDE; --accent-ink:#FFFFFF;
+  --tally:#D3263B; --good:#167D53; --warn:#A35A00; --warn-bg:#FFF4E2;
+  --font:'Montserrat','Gotham','Helvetica Neue',Arial,sans-serif;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --band:#031B38; --band-ink:#FFFFFF; --band-soft:#9CCBDD;
+  --bg:#0A1016; --surface:#121C24; --sunk:#0E171E;
+  --ink:#E8F0F5; --muted:#93A5B1; --line:#22313B;
+  --accent:#43B9EC; --accent-fill:#0E8FCB; --accent-ink:#FFFFFF;
+  --tally:#F0525F; --good:#43C08A; --warn:#F2B04B; --warn-bg:#2A1F0E;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --band:#031B38; --band-ink:#FFFFFF; --band-soft:#9CCBDD;
+  --bg:#0A1016; --surface:#121C24; --sunk:#0E171E;
+  --ink:#E8F0F5; --muted:#93A5B1; --line:#22313B;
+  --accent:#43B9EC; --accent-fill:#0E8FCB; --accent-ink:#FFFFFF;
+  --tally:#F0525F; --good:#43C08A; --warn:#F2B04B; --warn-bg:#2A1F0E;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:calc(64px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--band)}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.col{max-width:820px;margin:0 auto}
+
+/* masthead */
+.mast{background:var(--band);color:var(--band-ink)}
+.mast .col{padding-block:44px 34px}
+.eyebrow{font-size:.7rem;font-weight:800;letter-spacing:.16em;color:var(--band-soft);margin:0 0 12px;
+  display:flex;align-items:center;gap:9px}
+.eyebrow .tally{box-shadow:0 0 0 4px rgba(211,38,59,.28)}
+.mast h1{font-size:clamp(2rem,6vw,3rem);line-height:1.05;font-weight:800;letter-spacing:-.025em;margin:0 0 12px;text-wrap:balance}
+.mast .lede{font-size:1.05rem;color:var(--band-soft);margin:0 0 26px;max-width:36em;font-weight:500}
+.mast .lede b{color:var(--band-ink);font-weight:700}
+.stats{display:flex;flex-wrap:wrap;gap:8px 22px;margin:0;padding:18px 0 0;list-style:none;
+  border-top:1px solid rgba(255,255,255,.16)}
+.stats li{font-size:.78rem;font-weight:600;color:var(--band-soft)}
+.stats b{color:var(--band-ink);font-weight:800;font-size:1rem;margin-right:5px;font-variant-numeric:tabular-nums}
+
+/* section rail */
+.rail{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--surface);
+  border-bottom:1px solid var(--line)}
+.rail ul{list-style:none;margin:0 auto;padding:0;max-width:820px;display:flex;gap:2px;overflow-x:auto;
+  scrollbar-width:none}
+.rail ul::-webkit-scrollbar{display:none}
+.rail a{display:block;padding:15px 11px 13px;font-size:.74rem;font-weight:700;letter-spacing:.02em;white-space:nowrap;
+  color:var(--muted);text-decoration:none;border-bottom:3px solid transparent}
+.rail a:hover{color:var(--ink)}
+.rail a.on{color:var(--ink);border-bottom-color:var(--accent-fill)}
+
+/* sections */
+main{padding-block:10px 70px}
+.part{padding-block:46px 8px;border-bottom:1px solid var(--line)}
+.part:last-of-type{border-bottom:0}
+.kicker{font-size:.68rem;font-weight:800;letter-spacing:.15em;color:var(--accent);margin:0 0 8px}
+h2{font-size:clamp(1.45rem,4vw,1.85rem);line-height:1.15;font-weight:800;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance}
+h3{font-size:1.02rem;font-weight:800;letter-spacing:-.005em;margin:32px 0 10px}
+p{margin:0 0 14px;max-width:65ch}
+.sub{color:var(--muted);font-size:.9rem;margin-top:-4px}
+.lbl{font-size:.66rem;font-weight:800;letter-spacing:.14em;margin:0 0 6px}
+
+/* callouts */
+.note{border-radius:var(--r);padding:18px 20px;margin:20px 0;background:var(--sunk);border:1px solid var(--line)}
+.note p:last-child{margin-bottom:0}
+.note .lbl{color:var(--accent)}
+.note.heart{background:var(--band);border-color:var(--band);color:var(--band-ink)}
+.note.heart .lbl{color:var(--band-soft)}
+.note.heart p{font-size:1.08rem;font-weight:600;line-height:1.55;max-width:none}
+.note.heart cite{display:block;font-style:normal;font-size:.78rem;color:var(--band-soft);font-weight:600;margin-top:10px}
+.note.warn{background:var(--warn-bg);border-color:transparent}
+.note.warn .lbl{color:var(--warn)}
+
+/* lists */
+ul.ticks,ol.rules{padding:0;margin:0 0 16px;list-style:none;display:grid;gap:10px;max-width:65ch}
+ul.ticks li{position:relative;padding-left:22px}
+ul.ticks li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:2px;background:var(--accent-fill)}
+ol.rules{counter-reset:r;gap:0;border-top:1px solid var(--line)}
+ol.rules li{counter-increment:r;display:grid;grid-template-columns:42px 1fr;gap:4px 12px;padding:14px 0;border-bottom:1px solid var(--line)}
+ol.rules li::before{content:counter(r);grid-row:span 2;font-size:1.6rem;font-weight:800;color:var(--accent);line-height:1.1;
+  font-variant-numeric:tabular-nums}
+ol.rules b{font-weight:800}
+ol.rules span{color:var(--muted);font-size:.93rem}
+ol.rules em{font-style:normal;font-size:.64rem;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-left:6px}
+
+/* vocab */
+.vocab{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:4px 0 18px}
+.vocab div{background:var(--surface);padding:14px 16px;min-width:0}
+.vocab dt{font-weight:800;font-size:.92rem;margin-bottom:2px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.vocab dd{margin:0;color:var(--muted);font-size:.86rem;line-height:1.5}
+.chip{font-size:.58rem;font-weight:800;letter-spacing:.1em;padding:2px 6px;border-radius:4px;background:var(--accent-fill);color:var(--accent-ink)}
+
+/* figures */
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:6px 0 10px}
+.grid.n1{grid-template-columns:minmax(0,1fr)}
+.grid.n3{grid-template-columns:repeat(3,minmax(0,1fr))}
+figure.fr{margin:0;min-width:0}
+figure.fr .zoom{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  background:var(--sunk);cursor:zoom-in;line-height:0}
+figure.fr img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;display:block;transition:transform .35s}
+figure.fr .zoom:hover img{transform:scale(1.025)}
+figure.zone{margin:18px 0}
+figure.zone img{aspect-ratio:4/3}
+figcaption{font-size:.84rem;color:var(--muted);line-height:1.5;margin-top:8px}
+
+/* move table */
+.tbl{overflow-x:auto;margin:6px 0 18px;border:1px solid var(--line);border-radius:var(--r)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.88rem}
+th{text-align:left;font-size:.66rem;letter-spacing:.12em;font-weight:800;color:var(--muted);background:var(--sunk);padding:11px 14px}
+td{padding:12px 14px;border-top:1px solid var(--line);vertical-align:top}
+td:first-child{font-weight:800;white-space:nowrap}
+
+/* banned */
+.banned{display:grid;gap:10px;margin:8px 0 18px}
+.banned div{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;padding:12px 16px;
+  background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.banned s{text-decoration-color:var(--tally);text-decoration-thickness:2px;color:var(--muted);font-weight:600}
+.banned i{font-style:normal;color:var(--muted);font-size:.8rem}
+.banned b{font-weight:700;font-size:.92rem}
+
+/* camera tabs */
+.tabs{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:8px 0 0}
+.tabs [role=tab]{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;
+  padding:10px 8px 9px;cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:2px;position:relative;min-width:0}
+.tabs [role=tab] b{font-size:.92rem;font-weight:800;display:flex;align-items:center;gap:7px}
+.tabs [role=tab] > span:last-child{font-size:.66rem;color:var(--muted);font-weight:600;line-height:1.3;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tabs .tally{position:absolute;top:10px;right:9px;background:var(--line);box-shadow:none}
+.tabs [aria-selected=true]{border-color:var(--accent-fill);box-shadow:0 0 0 1px var(--accent-fill)}
+.tabs [aria-selected=true] .tally{background:var(--tally);box-shadow:0 0 0 3px rgba(211,38,59,.22)}
+.tally{width:9px;height:9px;border-radius:50%;background:var(--tally);display:inline-block;flex:0 0 auto}
+
+.cpanel{padding-top:24px}
+.chead{display:flex;align-items:center;gap:16px 22px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.cnum{font-size:2.4rem;font-weight:800;letter-spacing:-.03em;line-height:1;display:flex;align-items:center;gap:12px}
+.cnum .tally{width:13px;height:13px;box-shadow:0 0 0 4px rgba(211,38,59,.22)}
+.cmeta{display:flex;flex-direction:column;flex:1 1 160px;min-width:0}
+.cmeta b{font-size:1.05rem;font-weight:800}
+.cmeta span{font-size:.8rem;color:var(--muted);font-weight:600}
+.ccount{display:flex;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.ccount li{font-size:.7rem;font-weight:700;background:var(--sunk);border:1px solid var(--line);border-radius:999px;padding:3px 10px;
+  color:var(--muted);white-space:nowrap}
+
+.owns{margin:22px 0 4px;padding:18px 20px;border-left:4px solid var(--accent-fill);background:var(--surface);
+  border-radius:0 var(--r) var(--r) 0}
+.owns .lbl{color:var(--accent)}
+.own-q{font-size:1.18rem;font-weight:700;line-height:1.4;margin:0}
+.owns.draft{border-left-color:var(--warn)}
+.owns.draft .lbl{color:var(--warn)}
+.own-n{font-size:.82rem;color:var(--muted);margin:8px 0 0}
+
+ol.moves{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ol.moves li{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:4px;min-width:0}
+ol.moves b{font-size:.92rem;font-weight:800}
+ol.moves span{font-size:.85rem;color:var(--muted);line-height:1.5}
+
+ul.clips{list-style:none;padding:0;margin:8px 0 6px;display:grid;gap:6px}
+ul.clips a{display:flex;align-items:center;gap:14px;padding:11px 14px;background:var(--surface);border:1px solid var(--line);
+  border-radius:10px;text-decoration:none;color:var(--ink)}
+ul.clips a:hover{border-color:var(--accent-fill)}
+ul.clips a:hover .go{color:var(--accent)}
+.tc{flex:0 0 auto;min-width:62px;text-align:center;font-size:.8rem;font-weight:800;font-variant-numeric:tabular-nums;
+  background:var(--band);color:var(--band-ink);border-radius:6px;padding:4px 8px;letter-spacing:.02em}
+.tc.full{background:var(--sunk);color:var(--muted);border:1px solid var(--line)}
+.nwrap{flex:1;min-width:0;display:flex;flex-direction:column}
+.nt{font-size:.9rem;font-weight:600;line-height:1.4}
+.nt.ph{display:none;color:var(--muted);font-weight:500;font-style:italic}
+.editing .nt.ph{display:inline}
+.curl-row{display:none}
+.editing .curl-row{display:flex;align-items:center;gap:8px;margin:5px 0 4px 14px}
+.curl-row span{font-size:.62rem;font-weight:800;letter-spacing:.12em;color:var(--muted)}
+.curl{flex:1;min-width:0;font:inherit;font-size:.78rem;color:var(--ink);background:var(--sunk);border:1px dashed var(--accent-fill);
+  border-radius:7px;padding:6px 9px}
+.curl:focus{outline:2px solid var(--accent-fill);outline-offset:1px;border-style:solid}
+.curl.edited{border-color:var(--warn);border-style:solid}
+.phctl{display:none}
+.editing .phctl{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.ph-btn{font:inherit;font-size:.74rem;font-weight:800;border-radius:7px;padding:7px 12px;cursor:pointer;
+  background:var(--band);color:var(--band-ink);border:1px solid var(--band)}
+.ph-btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.ph-btn:disabled{opacity:.5;cursor:default}
+.editing figure.fr.swapped .zoom{box-shadow:0 0 0 2px var(--warn)}
+.miss{font-size:.74rem;color:var(--warn);font-weight:600;margin-top:2px}
+.go{flex:0 0 auto;font-size:.72rem;font-weight:800;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.todo{font-size:.85rem;font-weight:600;color:var(--warn);background:var(--warn-bg);border-radius:10px;padding:11px 14px;margin:16px 0 0;max-width:none}
+
+/* fast track */
+.track{display:grid;gap:0;margin:8px 0 18px;border-left:2px solid var(--line);padding-left:0}
+.track div{position:relative;padding:0 0 22px 26px}
+.track div::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;
+  background:var(--surface);border:2px solid var(--accent-fill)}
+.track div:last-child::before{background:var(--accent-fill)}
+.track b{display:block;font-size:.95rem;font-weight:800}
+.track small{display:block;font-size:.68rem;letter-spacing:.12em;font-weight:800;color:var(--accent);margin-bottom:2px}
+.track span{display:block;color:var(--muted);font-size:.88rem;max-width:62ch}
+.track em{display:block;font-style:normal;font-size:.85rem;font-weight:600;margin-top:4px}
+
+footer{color:var(--muted);font-size:.78rem;padding-block:26px 40px;border-top:1px solid var(--line)}
+footer p{max-width:none;margin:0 0 4px}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:60;background:rgba(5,10,16,.92);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:14px;
+  padding:calc(20px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb img{max-width:100%;max-height:78vh;border-radius:8px;display:block}
+.lb p{color:#DCE8EF;font-size:.92rem;max-width:70ch;text-align:center;margin:0}
+.lb button{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));
+  background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:999px;width:40px;height:40px;font-size:1.3rem;cursor:pointer}
+
+/* edit mode */
+.editbtn{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));
+  z-index:50;background:var(--band);color:var(--band-ink);border:0;border-radius:999px;padding:12px 18px;
+  font:inherit;font-weight:800;font-size:.82rem;letter-spacing:.02em;cursor:pointer;
+  box-shadow:0 8px 24px rgba(0,0,0,.28);display:flex;gap:9px;align-items:center}
+.editbtn:hover{filter:brightness(1.15)}
+.editbtn svg{width:15px;height:15px}
+.ebar{position:fixed;left:0;right:0;bottom:0;z-index:55;background:var(--band);color:var(--band-ink);
+  padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+  box-shadow:0 -10px 30px rgba(0,0,0,.22)}
+.ebar-in{max-width:820px;margin:0 auto;display:flex;align-items:center;gap:10px 12px;flex-wrap:wrap}
+.ebar .msg{flex:1 1 240px;min-width:0;font-size:.8rem;line-height:1.45;color:var(--band-soft);display:flex;gap:9px;align-items:center}
+.ebar .msg b{color:var(--band-ink);font-weight:800;white-space:nowrap}
+.ebar .st{font-weight:700;color:var(--band-ink)}
+.ebar button{font:inherit;font-size:.78rem;font-weight:800;border-radius:8px;padding:9px 14px;cursor:pointer;
+  border:1px solid rgba(255,255,255,.32);background:transparent;color:var(--band-ink)}
+.ebar button.primary{background:var(--accent-fill);border-color:var(--accent-fill)}
+.ebar button:disabled{opacity:.38;cursor:default}
+.editing [data-k]{outline:1px dashed color-mix(in srgb,var(--accent-fill) 60%,transparent);outline-offset:3px;border-radius:3px;cursor:text}
+.editing [data-k]:hover{background:color-mix(in srgb,var(--accent-fill) 8%,transparent)}
+.editing [data-k]:focus{outline:2px solid var(--accent-fill);outline-offset:3px}
+.editing [data-k].edited{box-shadow:-5px 0 0 -1px var(--warn)}
+body.editing main{padding-bottom:120px}
+body:not(.editing) .removed, body:not(.editing) .gone{display:none!important}
+.editing .removed{opacity:.38;text-decoration:line-through;text-decoration-thickness:1px}
+.editing figure.removed img{filter:grayscale(1)}
+.clip-rm{font:inherit;font-size:.7rem;font-weight:800;border-radius:7px;padding:6px 10px;cursor:pointer;
+  background:transparent;color:var(--ink);border:1px solid var(--line);white-space:nowrap}
+
+@media (max-width:640px){
+  .tabs{grid-template-columns:repeat(3,1fr)}
+  .banned div{grid-template-columns:1fr;gap:2px}
+  .banned i{display:none}
+  .cnum{font-size:2rem}
+  .grid,.grid.n3,ol.moves{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="mast gut">
+  <div class="col">
+    <p class="eyebrow"><span class="tally"></span><span>CF MIAMI &middot; BROADCAST CAMERA TEAM</span></p>
+    <h1>Christ Fellowship Camera Guide</h1>
+    <p class="lede"><b>Worship first. Capture second.</b> Everything a new operator needs, from your why to your zone, with real frames and clips from our own stream.</p>
+    <ul class="stats">
+      <li><b>6</b>cameras</li>
+      <li><b>21</b>frames to study</li>
+      <li><b>23</b>timestamped clips</li>
+      <li><b>6</b>core rules</li>
+    </ul>
+  </div>
+</header>
+
+<nav class="rail gut" aria-label="Sections">
+  <ul>
+    <li><a href="#why">Why</a></li>
+    <li><a href="#words">Words</a></li>
+    <li><a href="#framing">Framing</a></li>
+    <li><a href="#movement">Movement</a></li>
+    <li><a href="#rules">Rules</a></li>
+    <li><a href="#shots">Shots</a></li>
+    <li><a href="#director">Camera Director</a></li>
+    <li><a href="#cameras">Cameras</a></li>
+    <li><a href="#track">Fast track</a></li>
+  </ul>
+</nav>
+
+<main class="gut">
+<div class="col">
+
+<!-- 1 WHY -->
+<section class="part" id="why">
+  <p class="kicker">PART 1 &middot; 3 MIN</p>
+  <h2>Start with your why</h2>
+  <p>Why this church? Why this team? Why give up a weekend morning? Write your answer down and keep it where you&rsquo;ll see it. On long weekends and early call times, your why is what keeps the camera steady.</p>
+  <div class="note heart">
+    <p class="lbl">HEART CHECK</p>
+    <p>No matter how hard we work, and no matter what mistakes get made live, there is always somebody on the other end of the lens being touched.</p>
+    <cite>Chad, our broadcast coach</cite>
+  </div>
+  <h3>10% tech, 90% heart</h3>
+  <p>This is worship, not just production. The camera is your instrument the way drums are the drummer&rsquo;s. You are loved for whose you are, not what you do. Serve from that, not for it.</p>
+  <h3>A safe place to fail</h3>
+  <ul class="ticks">
+    <li>Live production guarantees mistakes, for ten-year veterans too. A missed shot never stopped God from moving.</li>
+    <li>You&rsquo;ll be asked to try shots you might not land. That&rsquo;s on purpose. It&rsquo;s how you grow.</li>
+    <li>Don&rsquo;t go home and beat yourself up. Rewatch, learn, move on.</li>
+  </ul>
+</section>
+
+<!-- 2 WORDS -->
+<section class="part" id="words">
+  <p class="kicker">PART 2 &middot; 3 MIN</p>
+  <h2>Words you&rsquo;ll hear on comms</h2>
+  <dl class="vocab">
+    <div><dt>Camera Director <span class="chip">CF BOOTH</span></dt><dd>Calls the shots and cuts the cameras for service. The voice in your headset.</dd></div>
+    <div><dt>&ldquo;You&rsquo;re live&rdquo; <span class="chip">CF BOOTH</span></dt><dd>Your camera is on program right now. Hold your frame.</dd></div>
+    <div><dt>Auto Trans <span class="chip">CF BOOTH</span></dt><dd>A dissolve between two shots. In worship we cut instead.</dd></div>
+    <div><dt>ProPresenter <span class="chip">CF BOOTH</span></dt><dd>The lyrics and graphics on screen and on the stream.</dd></div>
+    <div><dt>Program</dt><dd>The shot currently going out to the stream.</dd></div>
+    <div><dt>Zone</dt><dd>The part of the room that is yours to cover.</dd></div>
+    <div><dt>Frame</dt><dd>Everything visible in your shot.</dd></div>
+    <div><dt>Thirds</dt><dd>The frame split 3&times;3. Subjects go on the left or right third.</dd></div>
+    <div><dt>Looking room</dt><dd>Open space on the side the subject faces.</dd></div>
+    <div><dt>Headroom</dt><dd>Space between the top of the head and the top of frame.</dd></div>
+    <div><dt>Wide / Medium / Tight</dt><dd>Full stage, then waist-up, then face or hands.</dd></div>
+    <div><dt>Rack focus</dt><dd>Shifting focus from one subject to another in the same shot.</dd></div>
+    <div><dt>Whip pan</dt><dd>A fast pan that lands crisp on a new subject, on the beat.</dd></div>
+    <div><dt>Two-in-one</dt><dd>Two distinct shots chained in a single take.</dd></div>
+    <div><dt>Reset</dt><dd>Snapping to a new frame the moment you&rsquo;re off program.</dd></div>
+  </dl>
+  <div class="note">
+    <p class="lbl">COMMS IN ONE BREATH</p>
+    <p>The Camera Director talks; you listen. Speak up only for problems. Iris and shading belong to the Technical Director, so if your picture looks off, say so on comms instead of fixing it yourself. If the tone sounds sharp mid-worship, that&rsquo;s urgency, not anger.</p>
+  </div>
+</section>
+
+<!-- 3 FRAMING -->
+<section class="part" id="framing">
+  <p class="kicker">PART 3 &middot; 5 MIN</p>
+  <h2>Framing</h2>
+  <h3>Thirds, never center (almost)</h3>
+  <p>Centered is for people talking to the camera. Worship subjects go on the left or right third. One exception: a tight instrument shot, like hands on keys, can sit centered.</p>
+  <h3>The mic-hand rule</h3>
+  <p>Whichever hand holds the mic decides the side. Mic in the right hand puts the singer on the left third, so when the free hand lifts in worship it fills the frame instead of leaving it.</p>
+  <h3>Looking room</h3>
+  <p>Leave open space on the side the subject faces. Even empty space feels right at home. Pressed against the edge, they look like they&rsquo;re staring out of the viewer&rsquo;s TV.</p>
+  <h3>Headroom: less than you think</h3>
+  <p>The most common note on new operators&rsquo; footage. Bring the top of frame down. When in doubt, tighter on top.</p>
+  <div class="grid">
+    <figure class="fr"><button type="button" class="zoom" data-src="img/f-michand.jpg" data-cap="Good: mic in the right hand, singer on the left third, the free hand filling the open frame." aria-label="Enlarge: mic-hand rule"><img src="img/f-michand.jpg" alt="Worship leader framed by the mic-hand rule" loading="lazy" width="1600" height="909"></button><figcaption>Good: mic in the right hand, singer on the left third, the free hand filling the open frame.</figcaption></figure>
+    <figure class="fr"><button type="button" class="zoom" data-src="img/f-headroom.jpg" data-cap="Fix: the red zone is dead space. The green line is where the top of frame belongs." aria-label="Enlarge: too much headroom"><img src="img/f-headroom.jpg" alt="Too much headroom, annotated" loading="lazy" width="1600" height="905"></button><figcaption>Fix: the red zone is dead space. The green line is where the top of frame belongs.</figcaption></figure>
+    <figure class="fr"><button type="button" class="zoom" data-src="img/f-exception.jpg" data-cap="The exception: someone talking to camera is centered, and that&rsquo;s correct." aria-label="Enlarge: centered speaker"><img src="img/f-exception.jpg" alt="Speaker framed in the center" loading="lazy" width="1600" height="894"></button><figcaption>The exception: someone talking to camera is centered, and that&rsquo;s correct.</figcaption></figure>
+    <figure class="fr"><button type="button" class="zoom" data-src="img/f-wide.jpg" data-cap="The establishing wide: stage, crowd and screens all read. The Camera Director cuts here at every song transition." aria-label="Enlarge: establishing wide"><img src="img/f-wide.jpg" alt="Establishing wide of the room" loading="lazy" width="1600" height="904"></button><figcaption>The establishing wide: stage, crowd and screens all read. The Camera Director cuts here at every song transition.</figcaption></figure>
+  </div>
+</section>
+
+<!-- 4 MOVEMENT -->
+<section class="part" id="movement">
+  <p class="kicker">PART 4 &middot; 4 MIN</p>
+  <h2>The Bounce &amp; Cinema Verit&eacute;</h2>
+  <h3>On sticks</h3>
+  <p>Loosen the tripod head a little and trace a slow figure-eight with your crosshairs. With practice it turns into organic drift, like a ball on a rubber band floating inside a circle. The shot never sits dead.</p>
+  <h3>Handheld</h3>
+  <p>Hold the camera wherever it&rsquo;s comfortable, chest or shoulder, and move with the music. Fast song, faster bounce. Slow song, slower. Walking around a player, bend your knees and step heel to toe: your legs absorb the motion and your upper body floats like a gimbal.</p>
+  <h3>Replace every zoom with a reset</h3>
+  <p>No slow push-ins or pull-outs. The moment the Camera Director cuts away from you, snap to a new frame: tighter, wider, or a new subject. Tight, off, head-to-toe, off, medium. There&rsquo;s always a fresh shot to come back to.</p>
+  <div class="note">
+    <p class="lbl">THE #1 NOTE ON OUR FOOTAGE</p>
+    <p>&ldquo;Good move. 5 to 10% faster.&rdquo; On builds, go over the top. The Camera Director can dial you down with &ldquo;less, less&hellip; pocket that.&rdquo; Timid can&rsquo;t be dialed up.</p>
+  </div>
+  <h3>Level 2: match the singer, not the band</h3>
+  <p>When the band builds but the vocalist stays even and unhurried, follow the singer. It will feel too slow. That&rsquo;s how you know it&rsquo;s right.</p>
+</section>
+
+<!-- 5 RULES -->
+<section class="part" id="rules">
+  <p class="kicker">PART 5 &middot; 3 MIN</p>
+  <h2>The core rules</h2>
+  <ol class="rules">
+    <li><b>Stay take-able 100% of the time<em>SOFT</em></b><span>Keep a usable frame even mid-move. The Camera Director can come back to you at any second.</span></li>
+    <li><b>Be intentional</b><span>Know what you&rsquo;re shooting before you move. Searching on camera reads as a mistake at home.</span></li>
+    <li><b>Know your end frame</b><span>Land the move so clean you could print it and hang it. If something goes wrong mid-move, go back to your last good shot.</span></li>
+    <li><b>Know your zone</b><span>Total creative freedom inside it. Stay out of everyone else&rsquo;s unless you&rsquo;re called.</span></li>
+    <li><b>Listen actively</b><span>Program, guide and click are in your ears on purpose. If a part starts and its camera is live, the nearest camera covers it without being asked.</span></li>
+    <li><b>Chain your shots</b><span>Two-in-ones now: a rack focus, a pan down, hands to face. Three-in-ones as you grow. Drill them at soundcheck first.</span></li>
+  </ol>
+</section>
+
+<!-- 6 SHOTS -->
+<section class="part" id="shots">
+  <p class="kicker">PART 6 &middot; 5 MIN</p>
+  <h2>Shot vocabulary</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>MOVE</th><th>HOW</th><th>WHEN</th></tr></thead>
+    <tbody>
+      <tr><td>Reset</td><td>Off program? New framing immediately.</td><td>Constantly</td></tr>
+      <tr><td>Rack focus</td><td>Shift focus between layered subjects.</td><td>Breathers, intimate moments</td></tr>
+      <tr><td>Whip pan</td><td>Fast pan landing on the beat.</td><td>Builds and big moments</td></tr>
+      <tr><td>Reveal</td><td>Start on hands or crowd, resolve to the leader.</td><td>House cameras, any time</td></tr>
+      <tr><td>Hands to face</td><td>Land on the hands, rise to the player.</td><td>Any instrument feature</td></tr>
+      <tr><td>Wrap-around</td><td>Gimbal-walk around a player.</td><td>Mid-song, in your zone</td></tr>
+      <tr><td>One-take shot</td><td>Keep the shot evolving until you&rsquo;re cut.</td><td>When the Camera Director trusts you with it</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Instruments, annotated</h3>
+  <p class="sub">The pattern: tight can be centered, wider goes back on a third, and layers make it cinematic.</p>
+  <div class="grid">
+    <figure class="fr"><button type="button" class="zoom" data-src="img/f-keys.jpg" data-cap="Tight on the keys: the one place centered is fine. Shallow depth melts the room." aria-label="Enlarge: tight keys"><img src="img/f-keys.jpg" alt="Tight keys shot" loading="lazy" width="1600" height="893"></button><figcaption>Tight on the keys: the one place centered is fine. Shallow depth melts the room.</figcaption></figure>
+    <figure class="fr"><button type="button" class="zoom" data-src="img/f-rack.jpg" data-cap="Rack-focus setup: hands sharp in front, player soft behind. Focus here, then pull there." aria-label="Enlarge: rack focus setup"><img src="img/f-rack.jpg" alt="Rack focus setup on keys" loading="lazy" width="1600" height="898"></button><figcaption>Rack-focus setup: hands sharp in front, player soft behind. Focus here, then pull there.</figcaption></figure>
+    <figure class="fr"><button type="button" class="zoom" data-src="img/f-kit.jpg" data-cap="Shoot through the kit: cymbals in front for depth, the drummer&rsquo;s face ready for the rise." aria-label="Enlarge: through the kit"><img src="img/f-kit.jpg" alt="Shooting through the drum kit" loading="lazy" width="1600" height="904"></button><figcaption>Shoot through the kit: cymbals in front for depth, the drummer&rsquo;s face ready for the rise.</figcaption></figure>
+    <figure class="fr"><button type="button" class="zoom" data-src="img/f-haze.jpg" data-cap="Foreground, haze and backlight: layers on layers. Through the kit, not around it." aria-label="Enlarge: foreground and haze"><img src="img/f-haze.jpg" alt="Drums with haze and foreground cymbals" loading="lazy" width="1600" height="891"></button><figcaption>Foreground, haze and backlight: layers on layers. Through the kit, not around it.</figcaption></figure>
+    <figure class="fr"><button type="button" class="zoom" data-src="img/f-guitar.jpg" data-cap="Instrumentalists follow the singer rules at medium: player on the third, the neck filling the open side." aria-label="Enlarge: guitar on the third"><img src="img/f-guitar.jpg" alt="Guitarist on the left third" loading="lazy" width="1600" height="908"></button><figcaption>Instrumentalists follow the singer rules at medium: player on the third, the neck filling the open side.</figcaption></figure>
+    <figure class="fr"><button type="button" class="zoom" data-src="img/f-bass.jpg" data-cap="Almost: great low angle and energy, but at this width he belongs on a third." aria-label="Enlarge: bass, almost"><img src="img/f-bass.jpg" alt="Bass player, centered at a wide angle" loading="lazy" width="1600" height="894"></button><figcaption>Almost: great low angle and energy, but at this width he belongs on a third.</figcaption></figure>
+  </div>
+</section>
+
+<!-- 7 DIRECTOR -->
+<section class="part" id="director">
+  <p class="kicker">PART 7 &middot; 4 MIN</p>
+  <h2>What your Camera Director is looking for</h2>
+  <p>Understand the chair on the other end of comms and you&rsquo;ll operate two levels better.</p>
+  <ul class="ticks">
+    <li><b>Cuts land on the music.</b> Chord changes and band hits, not a fixed count. Live inside the song and your resets will be ready when a cut needs somewhere to go.</li>
+    <li><b>Build, then breathe.</b> Fast cuts into the big moment, a wide at the peak, then a hold on one operator. If that hold is on you, keep the shot evolving.</li>
+    <li><b>No cuts to a player who isn&rsquo;t playing yet.</b> If you hear &ldquo;coming to you soon,&rdquo; frame it and hold ready.</li>
+    <li><b>Never the same subject twice in a row.</b> Just left the bass? Offer something else first.</li>
+    <li><b>Mistakes don&rsquo;t get called out on comms.</b> Corrections come as &ldquo;try the left third&hellip; yes, perfect, thank you.&rdquo; That&rsquo;s coaching.</li>
+    <li><b>&ldquo;Lock that in&rdquo; means remember the feel.</b> It&rsquo;s your new baseline for that tempo.</li>
+  </ul>
+  <h3>The banned list</h3>
+  <p class="sub">These read as old-school broadcast. If leadership loves one, leadership wins.</p>
+  <div class="banned">
+    <div><s>Slow push-ins and pull-outs</s><i>instead</i><b>Bounce, plus a reset between cuts</b></div>
+    <div><s>Slow pans</s><i>instead</i><b>Whip on the beat, or hold the third</b></div>
+    <div><s>Auto Trans (dissolves)</s><i>instead</i><b>Cut. Even on slow songs.</b></div>
+    <div><s>Dutch angles and barrel rolls</s><i>instead</i><b>Movement, racks and reveals</b></div>
+    <div><s>Centered wide or medium subjects</s><i>instead</i><b>Thirds and looking room</b></div>
+  </div>
+</section>
+
+<!-- 8 CAMERAS -->
+<section class="part" id="cameras">
+  <p class="kicker">PART 8 &middot; YOUR POSITION</p>
+  <h2>Cameras</h2>
+  <p>Pick your camera. Each one has its zone, what it owns, its moves, the frames you picked, and the moments on the stream to study.</p>
+  <div class="tabs" role="tablist" aria-label="Camera positions">
+<button type="button" role="tab" id="tab-cam1" aria-controls="panel-cam1" aria-selected="false" tabindex="-1" data-cam="1"><span class="tally"></span><b>CAM 1</b><span>Tight camera</span></button>
+<button type="button" role="tab" id="tab-cam2" aria-controls="panel-cam2" aria-selected="false" tabindex="-1" data-cam="2"><span class="tally"></span><b>CAM 2</b><span>Wide, on the track</span></button>
+<button type="button" role="tab" id="tab-cam3" aria-controls="panel-cam3" aria-selected="true" tabindex="0" data-cam="3"><span class="tally"></span><b>CAM 3</b><span>House left</span></button>
+<button type="button" role="tab" id="tab-cam4" aria-controls="panel-cam4" aria-selected="false" tabindex="-1" data-cam="4"><span class="tally"></span><b>CAM 4</b><span>House right</span></button>
+<button type="button" role="tab" id="tab-cam5" aria-controls="panel-cam5" aria-selected="false" tabindex="-1" data-cam="5"><span class="tally"></span><b>CAM 5</b><span>Stage, keys side</span></button>
+<button type="button" role="tab" id="tab-cam6" aria-controls="panel-cam6" aria-selected="false" tabindex="-1" data-cam="6"><span class="tally"></span><b>CAM 6</b><span>Stage, drums side</span></button>
+  </div>
+<section class="cpanel" id="panel-cam1" role="tabpanel" aria-labelledby="tab-cam1" hidden>
+<div class="chead"><div class="cnum"><span class="tally"></span><span>CAM 1</span></div><div class="cmeta"><b>Tight camera</b><span>Tight</span></div><ul class="ccount"><li>Zone map</li><li>2 frames</li><li>1 clip</li></ul></div>
+<div class="owns draft"><p class="lbl">WHAT YOU OWN · DRAFT</p><p class="own-q">Tight shots of the worship leader.</p><p class="own-n">Drafted from your two screenshots. Confirm or correct it on the board.</p></div>
+<figure class="fr zone"><button type="button" class="zoom" data-src="img/zone-cam1.jpg" data-cap="Your cone runs from the camera to the stage. Inside it you have total creative freedom." aria-label="Enlarge: Your cone runs from the camera to the stage. Inside it you have total creative freedom."><img src="img/zone-cam1.jpg" alt="Your cone runs from the camera to the stage. Inside it you have total creative freedom." loading="lazy" width="1600" height="900"></button><figcaption>Your cone runs from the camera to the stage. Inside it you have total creative freedom.</figcaption></figure>
+<h3>Your moves</h3><ol class="moves">
+<li><b>Tight single, framed by the mic hand</b><span>Mic in the right hand puts the leader on the left third, so the free hand has room to lift.</span></li>
+<li><b>Hold through the moment</b><span>When an arm goes up, stay put. The lifted hand fills the open side and the shot finishes itself.</span></li>
+<li><b>Tighter on top</b><span>Bring the top of frame down closer to the head than feels natural.</span></li>
+<li><b>Reset the second you&#x27;re off</b><span>Tight, then medium, then tight again, so the Camera Director always has a fresh shot.</span></li>
+</ol>
+<h3>Frames you picked</h3><div class="grid n2">
+<figure class="fr"><button type="button" class="zoom" data-src="img/cam1-1.jpg" data-cap="Tight single on the leader. Mic in her right hand, so she sits left of center with the open side to her left hand." aria-label="Enlarge: Tight single on the leader. Mic in her right hand, so she sits left of center with the open side to her left hand."><img src="img/cam1-1.jpg" alt="Tight single on the leader. Mic in her right hand, so she sits left of center with the open side to her left hand." loading="lazy" width="1600" height="900"></button><figcaption>Tight single on the leader. Mic in her right hand, so she sits left of center with the open side to her left hand.</figcaption></figure>
+<figure class="fr"><button type="button" class="zoom" data-src="img/cam1-2.jpg" data-cap="Same shot, held: her free arm lifts and fills the open side of the frame. This is the mic-hand rule paying off." aria-label="Enlarge: Same shot, held: her free arm lifts and fills the open side of the frame. This is the mic-hand rule paying off."><img src="img/cam1-2.jpg" alt="Same shot, held: her free arm lifts and fills the open side of the frame. This is the mic-hand rule paying off." loading="lazy" width="1600" height="900"></button><figcaption>Same shot, held: her free arm lifts and fills the open side of the frame. This is the mic-hand rule paying off.</figcaption></figure>
+</div>
+<h3>Watch it on the stream</h3><p class="sub">Each link opens the stream at that second. Your notes say what to look for.</p><ul class="clips">
+<li><a href="https://youtu.be/qbHiGy4c0Y4?t=1621" target="_blank" rel="noopener noreferrer"><span class="tc">27:01</span><span class="nwrap"></span><span class="go">Watch</span></a></li>
+</ul>
+</section>
+<section class="cpanel" id="panel-cam2" role="tabpanel" aria-labelledby="tab-cam2" hidden>
+<div class="chead"><div class="cnum"><span class="tally"></span><span>CAM 2</span></div><div class="cmeta"><b>Wide, on the track</b><span>Wide</span></div><ul class="ccount"><li>Zone map</li><li>1 frame</li><li>2 clips</li></ul></div>
+<div class="owns draft"><p class="lbl">WHAT YOU OWN · DRAFT</p><p class="own-q">The wide: worship leaders and crowd together, and the big choruses.</p><p class="own-n">Drafted from your clip notes (“keeping WL’s and crowd”, “Big moment on cam 2 / Big Chorus”). Confirm on the board.</p></div>
+<figure class="fr zone"><button type="button" class="zoom" data-src="img/zone-cam2.jpg" data-cap="The track run inside the stanchions. Travel left and right; the move is part of the shot." aria-label="Enlarge: The track run inside the stanchions. Travel left and right; the move is part of the shot."><img src="img/zone-cam2.jpg" alt="The track run inside the stanchions. Travel left and right; the move is part of the shot." loading="lazy" width="1600" height="900"></button><figcaption>The track run inside the stanchions. Travel left and right; the move is part of the shot.</figcaption></figure>
+<h3>Your moves</h3><ol class="moves">
+<li><b>The establishing wide</b><span>Every song transition gets a wide of the room. It tells the viewer where they are and covers the water break.</span></li>
+<li><b>Hold the big chorus</b><span>On the biggest moment, the wide is the shot. Stage, screens and crowd all read at once.</span></li>
+<li><b>Leaders and crowd, even on small moments</b><span>A quieter section still works when the room is in the frame with the leader.</span></li>
+<li><b>Travel at the song’s speed</b><span>Your track speed is your movement speed. Builds get a faster push; worship gets a slow drift.</span></li>
+</ol>
+<h3>Frames you picked</h3><div class="grid n1">
+<figure class="fr"><button type="button" class="zoom" data-src="img/cam2-1.jpg" data-cap="The wide from the house: stage, band, screens and crowd in one frame. This is the shot that resets every song." aria-label="Enlarge: The wide from the house: stage, band, screens and crowd in one frame. This is the shot that resets every song."><img src="img/cam2-1.jpg" alt="The wide from the house: stage, band, screens and crowd in one frame. This is the shot that resets every song." loading="lazy" width="1600" height="900"></button><figcaption>The wide from the house: stage, band, screens and crowd in one frame. This is the shot that resets every song.</figcaption></figure>
+</div>
+<h3>Watch it on the stream</h3><p class="sub">Each link opens the stream at that second. Your notes say what to look for.</p><ul class="clips">
+<li><a href="https://youtu.be/qbHiGy4c0Y4?t=1693" target="_blank" rel="noopener noreferrer"><span class="tc">28:13</span><span class="nwrap"><span class="nt">Not a big moment but still powerful, keeping WL’s and crowd</span></span><span class="go">Watch</span></a></li>
+<li><a href="https://youtu.be/qbHiGy4c0Y4" target="_blank" rel="noopener noreferrer"><span class="tc full">FULL</span><span class="nwrap"><span class="nt">Big moment on cam 2 / Big Chorus</span><span class="miss">No timestamp. Re-copy the link at the moment.</span></span><span class="go">Watch</span></a></li>
+</ul>
+</section>
+<section class="cpanel" id="panel-cam3" role="tabpanel" aria-labelledby="tab-cam3">
+<div class="chead"><div class="cnum"><span class="tally"></span><span>CAM 3</span></div><div class="cmeta"><b>House left</b><span>Handheld</span></div><ul class="ccount"><li>Zone map</li><li>4 frames</li><li>5 clips</li></ul></div>
+<div class="owns"><p class="lbl">WHAT YOU OWN · IN YOUR WORDS</p><p class="own-q">WL’s and crowd engagement shots</p></div>
+<figure class="fr zone"><button type="button" class="zoom" data-src="img/zone-cam3.jpg" data-cap="House-left seating and aisles. The highlight follows the walkways you marked." aria-label="Enlarge: House-left seating and aisles. The highlight follows the walkways you marked."><img src="img/zone-cam3.jpg" alt="House-left seating and aisles. The highlight follows the walkways you marked." loading="lazy" width="1600" height="900"></button><figcaption>House-left seating and aisles. The highlight follows the walkways you marked.</figcaption></figure>
+<h3>Your moves</h3><ol class="moves">
+<li><b>Reveal the leader through raised hands</b><span>Start on the hands in front of you, then find the leader behind them.</span></li>
+<li><b>Rack from a hand into the leader</b><span>Focus on the hand in worship, then pull to the stage. Two shots in one take.</span></li>
+<li><b>Put the people at home in the crowd</b><span>Shoot through the room. Soft heads and shoulders in front make the viewer feel present.</span></li>
+<li><b>Steady walking shot</b><span>Bent knees, heel to toe. Your feet do the fast work so the frame floats.</span></li>
+</ol>
+<h3>Frames you picked</h3><div class="grid n4">
+<figure class="fr"><button type="button" class="zoom" data-src="img/cam3-1.jpg" data-cap="Leader on the left third, a raised hand soft in the foreground. Crowd and leader in one frame." aria-label="Enlarge: Leader on the left third, a raised hand soft in the foreground. Crowd and leader in one frame."><img src="img/cam3-1.jpg" alt="Leader on the left third, a raised hand soft in the foreground. Crowd and leader in one frame." loading="lazy" width="1600" height="900"></button><figcaption>Leader on the left third, a raised hand soft in the foreground. Crowd and leader in one frame.</figcaption></figure>
+<figure class="fr"><button type="button" class="zoom" data-src="img/cam3-2.jpg" data-cap="Shooting through the crowd: silhouetted heads frame the leader and put the viewer in the room." aria-label="Enlarge: Shooting through the crowd: silhouetted heads frame the leader and put the viewer in the room."><img src="img/cam3-2.jpg" alt="Shooting through the crowd: silhouetted heads frame the leader and put the viewer in the room." loading="lazy" width="1600" height="900"></button><figcaption>Shooting through the crowd: silhouetted heads frame the leader and put the viewer in the room.</figcaption></figure>
+<figure class="fr"><button type="button" class="zoom" data-src="img/cam3-3.jpg" data-cap="Leader on the right third, crowd shoulders soft in front. The layers do the work." aria-label="Enlarge: Leader on the right third, crowd shoulders soft in front. The layers do the work."><img src="img/cam3-3.jpg" alt="Leader on the right third, crowd shoulders soft in front. The layers do the work." loading="lazy" width="1600" height="900"></button><figcaption>Leader on the right third, crowd shoulders soft in front. The layers do the work.</figcaption></figure>
+<figure class="fr"><button type="button" class="zoom" data-src="img/cam3-4.jpg" data-cap="Wider from house left: the room in front, leader and band behind it." aria-label="Enlarge: Wider from house left: the room in front, leader and band behind it."><img src="img/cam3-4.jpg" alt="Wider from house left: the room in front, leader and band behind it." loading="lazy" width="1600" height="900"></button><figcaption>Wider from house left: the room in front, leader and band behind it.</figcaption></figure>
+</div>
+<h3>Watch it on the stream</h3><p class="sub">Each link opens the stream at that second. Your notes say what to look for.</p><ul class="clips">
+<li><a href="https://youtu.be/qbHiGy4c0Y4?t=933" target="_blank" rel="noopener noreferrer"><span class="tc">15:33</span><span class="nwrap"><span class="nt">Showing WL while revealing the hands raised</span></span><span class="go">Watch</span></a></li>
+<li><a href="https://youtu.be/qbHiGy4c0Y4?t=1674" target="_blank" rel="noopener noreferrer"><span class="tc">27:54</span><span class="nwrap"><span class="nt">Great hand in worship into WL reveal</span></span><span class="go">Watch</span></a></li>
+<li><a href="https://youtu.be/qbHiGy4c0Y4?t=1707" target="_blank" rel="noopener noreferrer"><span class="tc">28:27</span><span class="nwrap"><span class="nt">Putting the people at home in the crowd</span></span><span class="go">Watch</span></a></li>
+<li><a href="https://youtu.be/qbHiGy4c0Y4?t=1769" target="_blank" rel="noopener noreferrer"><span class="tc">29:29</span><span class="nwrap"><span class="nt">Showing WL’s and crowd</span></span><span class="go">Watch</span></a></li>
+<li><a href="https://youtu.be/qbHiGy4c0Y4?t=1819" target="_blank" rel="noopener noreferrer"><span class="tc">30:19</span><span class="nwrap"><span class="nt">Steady walking shot</span></span><span class="go">Watch</span></a></li>
+</ul>
+</section>
+<section class="cpanel" id="panel-cam4" role="tabpanel" aria-labelledby="tab-cam4" hidden>
+<div class="chead"><div class="cnum"><span class="tally"></span><span>CAM 4</span></div><div class="cmeta"><b>House right</b><span>Handheld</span></div><ul class="ccount"><li>Zone map</li><li>3 frames</li><li>3 clips</li></ul></div>
+<div class="owns"><p class="lbl">WHAT YOU OWN · IN YOUR WORDS</p><p class="own-q">WL’s and crowd engagement shots</p></div>
+<figure class="fr zone"><button type="button" class="zoom" data-src="img/zone-cam4.jpg" data-cap="House-right seating and aisles. CAM 3 mirrors you on the other side." aria-label="Enlarge: House-right seating and aisles. CAM 3 mirrors you on the other side."><img src="img/zone-cam4.jpg" alt="House-right seating and aisles. CAM 3 mirrors you on the other side." loading="lazy" width="1600" height="900"></button><figcaption>House-right seating and aisles. CAM 3 mirrors you on the other side.</figcaption></figure>
+<h3>Your moves</h3><ol class="moves">
+<li><b>The crowd shot with hands raised</b><span>Hands up in the foreground, stage and haze behind. Let the room carry it.</span></li>
+<li><b>Leader and crowd in one frame</b><span>Leader on a third, the crowd filling the looking room.</span></li>
+<li><b>Rack reveal into the leader</b><span>Start sharp on the crowd, pull focus to the leader on the beat.</span></li>
+<li><b>Cover what CAM 3 can’t</b><span>When CAM 3 is live on a subject, find the angle only your side has.</span></li>
+</ol>
+<h3>Frames you picked</h3><div class="grid n3">
+<figure class="fr"><button type="button" class="zoom" data-src="img/cam4-1.jpg" data-cap="Two vocalists, hands raised, crowd hands in the foreground and haze catching the light." aria-label="Enlarge: Two vocalists, hands raised, crowd hands in the foreground and haze catching the light."><img src="img/cam4-1.jpg" alt="Two vocalists, hands raised, crowd hands in the foreground and haze catching the light." loading="lazy" width="1600" height="900"></button><figcaption>Two vocalists, hands raised, crowd hands in the foreground and haze catching the light.</figcaption></figure>
+<figure class="fr"><button type="button" class="zoom" data-src="img/cam4-2.jpg" data-cap="Leader on the right third, raised hands on the left filling the looking room." aria-label="Enlarge: Leader on the right third, raised hands on the left filling the looking room."><img src="img/cam4-2.jpg" alt="Leader on the right third, raised hands on the left filling the looking room." loading="lazy" width="1600" height="900"></button><figcaption>Leader on the right third, raised hands on the left filling the looking room.</figcaption></figure>
+<figure class="fr"><button type="button" class="zoom" data-src="img/cam4-3.jpg" data-cap="Vocalist left of center with a worshipper’s hand soft on the right." aria-label="Enlarge: Vocalist left of center with a worshipper’s hand soft on the right."><img src="img/cam4-3.jpg" alt="Vocalist left of center with a worshipper’s hand soft on the right." loading="lazy" width="1600" height="900"></button><figcaption>Vocalist left of center with a worshipper’s hand soft on the right.</figcaption></figure>
+</div>
+<h3>Watch it on the stream</h3><p class="sub">Each link opens the stream at that second. Your notes say what to look for.</p><ul class="clips">
+<li><a href="https://youtu.be/qbHiGy4c0Y4?t=1709" target="_blank" rel="noopener noreferrer"><span class="tc">28:29</span><span class="nwrap"><span class="nt">Amazing crowd shot with hands raised</span></span><span class="go">Watch</span></a></li>
+<li><a href="https://youtu.be/qbHiGy4c0Y4?t=1859" target="_blank" rel="noopener noreferrer"><span class="tc">30:59</span><span class="nwrap"><span class="nt">WL and Crowd</span></span><span class="go">Watch</span></a></li>
+<li><a href="https://youtu.be/qbHiGy4c0Y4?t=2051" target="_blank" rel="noopener noreferrer"><span class="tc">34:11</span><span class="nwrap"><span class="nt">Rack reveal into WL</span></span><span class="go">Watch</span></a></li>
+</ul>
+</section>
+<section class="cpanel" id="panel-cam5" role="tabpanel" aria-labelledby="tab-cam5" hidden>
+<div class="chead"><div class="cnum"><span class="tally"></span><span>CAM 5</span></div><div class="cmeta"><b>Stage, keys side</b><span>Handheld</span></div><ul class="ccount"><li>Zone map</li><li>0 frames</li><li>5 clips</li></ul></div>
+<div class="owns"><p class="lbl">WHAT YOU OWN · IN YOUR WORDS</p><p class="own-q">Keys, electrics, side stage vocals and behind vocals minus balcony</p></div>
+<figure class="fr zone"><button type="button" class="zoom" data-src="img/zone-cam5.jpg" data-cap="Your side of the stage. Inside the zone you have total creative freedom." aria-label="Enlarge: Your side of the stage. Inside the zone you have total creative freedom."><img src="img/zone-cam5.jpg" alt="Your side of the stage. Inside the zone you have total creative freedom." loading="lazy" width="1600" height="900"></button><figcaption>Your side of the stage. Inside the zone you have total creative freedom.</figcaption></figure>
+<aside class="note warn"><p class="lbl">MIND THE BALCONY</p><p>Behind-the-vocals angles from your side can catch the balcony. When it’s empty, frame it out. Know your end frame before a wrap-around so it never swings into view.</p></aside>
+<h3>Your moves</h3><ol class="moves">
+<li><b>The standard keys shot</b><span>Tight on the hands can sit centered. Widen out and the player goes back on a third.</span></li>
+<li><b>Leader to keys in one move</b><span>Start on the leader, travel to the keys, land it clean.</span></li>
+<li><b>Whip pan, electric to electric</b><span>Fast and on the beat, landing crisp on the next player.</span></li>
+<li><b>Behind the vocals, balcony out</b><span>Shoot past the vocalists toward the room, framing out an empty balcony.</span></li>
+</ol>
+<h3>Watch it on the stream</h3><p class="sub">Each link opens the stream at that second. Your notes say what to look for.</p><ul class="clips">
+<li><a href="https://youtu.be/qbHiGy4c0Y4?t=984" target="_blank" rel="noopener noreferrer"><span class="tc">16:24</span><span class="nwrap"><span class="nt">Standard Keys shot</span></span><span class="go">Watch</span></a></li>
+<li><a href="https://youtu.be/qbHiGy4c0Y4?t=1756" target="_blank" rel="noopener noreferrer"><span class="tc">29:16</span><span class="nwrap"></span><span class="go">Watch</span></a></li>
+<li><a href="https://youtu.be/qbHiGy4c0Y4?t=1779" target="_blank" rel="noopener noreferrer"><span class="tc">29:39</span><span class="nwrap"><span class="nt">From WL to Keys</span></span><span class="go">Watch</span></a></li>
+<li><a href="https://youtu.be/qbHiGy4c0Y4?t=1812" target="_blank" rel="noopener noreferrer"><span class="tc">30:12</span><span class="nwrap"><span class="nt">Whip pan from Electric to Electric</span></span><span class="go">Watch</span></a></li>
+<li><a href="https://youtu.be/qbHiGy4c0Y4" target="_blank" rel="noopener noreferrer"><span class="tc full">FULL</span><span class="nwrap"><span class="miss">No timestamp. Re-copy the link at the moment.</span></span><span class="go">Watch</span></a></li>
+</ul>
+<p class="todo">Still needed: 2–3 still frames from these clips so this tab has pictures to study.</p>
+</section>
+<section class="cpanel" id="panel-cam6" role="tabpanel" aria-labelledby="tab-cam6" hidden>
+<div class="chead"><div class="cnum"><span class="tally"></span><span>CAM 6</span></div><div class="cmeta"><b>Stage, drums side</b><span>Handheld</span></div><ul class="ccount"><li>Zone map</li><li>1 frame</li><li>7 clips</li></ul></div>
+<div class="owns"><p class="lbl">WHAT YOU OWN · IN YOUR WORDS</p><p class="own-q">Drums, bass, side stage vocals and behind vocals minus balcony</p></div>
+<figure class="fr zone"><button type="button" class="zoom" data-src="img/zone-cam6.jpg" data-cap="Your side of the stage, around the kit. Inside the zone you have total creative freedom." aria-label="Enlarge: Your side of the stage, around the kit. Inside the zone you have total creative freedom."><img src="img/zone-cam6.jpg" alt="Your side of the stage, around the kit. Inside the zone you have total creative freedom." loading="lazy" width="1600" height="900"></button><figcaption>Your side of the stage, around the kit. Inside the zone you have total creative freedom.</figcaption></figure>
+<aside class="note warn"><p class="lbl">MIND THE BALCONY</p><p>Behind-the-vocals angles from your side can catch the balcony. When it’s empty, frame it out. Know your end frame before a wrap-around so it never swings into view.</p></aside>
+<h3>Your moves</h3><ol class="moves">
+<li><b>Behind the leader, balcony out</b><span>The reverse angle past the leader is strong. If the balcony is empty, keep it out of frame.</span></li>
+<li><b>The drum shot, then walk it</b><span>Shoot through the kit, then a walking move around it.</span></li>
+<li><b>Bass from the hands up</b><span>Start on the hands and rise to show the player full body.</span></li>
+<li><b>Wrap-arounds that avoid the balcony</b><span>Plan the end frame before you move so the balcony never swings into view.</span></li>
+</ol>
+<h3>Frames you picked</h3><div class="grid n1">
+<figure class="fr"><button type="button" class="zoom" data-src="img/cam6-1.jpg" data-cap="Tight on the bass. A tight instrument shot can sit centered; red light and shallow depth carry it." aria-label="Enlarge: Tight on the bass. A tight instrument shot can sit centered; red light and shallow depth carry it."><img src="img/cam6-1.jpg" alt="Tight on the bass. A tight instrument shot can sit centered; red light and shallow depth carry it." loading="lazy" width="1600" height="900"></button><figcaption>Tight on the bass. A tight instrument shot can sit centered; red light and shallow depth carry it.</figcaption></figure>
+</div>
+<h3>Watch it on the stream</h3><p class="sub">Each link opens the stream at that second. Your notes say what to look for.</p><ul class="clips">
+<li><a href="https://youtu.be/qbHiGy4c0Y4?t=926" target="_blank" rel="noopener noreferrer"><span class="tc">15:26</span><span class="nwrap"><span class="nt">Behind the WL / while not showing balcony (if no one is there)</span></span><span class="go">Watch</span></a></li>
+<li><a href="https://youtu.be/qbHiGy4c0Y4?t=1727" target="_blank" rel="noopener noreferrer"><span class="tc">28:47</span><span class="nwrap"></span><span class="go">Watch</span></a></li>
+<li><a href="https://youtu.be/qbHiGy4c0Y4?t=1740" target="_blank" rel="noopener noreferrer"><span class="tc">29:00</span><span class="nwrap"><span class="nt">Drum shot</span></span><span class="go">Watch</span></a></li>
+<li><a href="https://youtu.be/qbHiGy4c0Y4?t=1782" target="_blank" rel="noopener noreferrer"><span class="tc">29:42</span><span class="nwrap"><span class="nt">Showing full body upwards on Bass</span></span><span class="go">Watch</span></a></li>
+<li><a href="https://youtu.be/qbHiGy4c0Y4?t=1799" target="_blank" rel="noopener noreferrer"><span class="tc">29:59</span><span class="nwrap"><span class="nt">Cool wrap around, but try to avoid balcony</span></span><span class="go">Watch</span></a></li>
+<li><a href="https://youtu.be/qbHiGy4c0Y4?t=1810" target="_blank" rel="noopener noreferrer"><span class="tc">30:10</span><span class="nwrap"><span class="nt">Showing Bass</span></span><span class="go">Watch</span></a></li>
+<li><a href="https://youtu.be/qbHiGy4c0Y4?t=1899" target="_blank" rel="noopener noreferrer"><span class="tc">31:39</span><span class="nwrap"><span class="nt">Drum walking shot</span></span><span class="go">Watch</span></a></li>
+</ul>
+</section>
+</section>
+
+<!-- 9 FAST TRACK -->
+<section class="part" id="track">
+  <p class="kicker">PART 9 &middot; 3 MIN</p>
+  <h2>Your fast track</h2>
+  <div class="track">
+    <div><small>SERVE 1</small><b>Shadow</b><span>Watch an operator in your future zone. Learn comms and the room. Read parts 1 to 3.</span><em>You can speak the language and hold a camera at soundcheck.</em></div>
+    <div><small>SERVES 2&ndash;3</small><b>Sticks, your zone only</b><span>Thirds, headroom, the mic-hand rule. The figure-eight. Resets.</span><em>Clean, alive singles. You&rsquo;re usable on a Sunday.</em></div>
+    <div><small>SERVES 4&ndash;6</small><b>Movement</b><span>Match the tempo, then go 10% faster. Hands to face. Your first rack-focus two-in-ones.</span><em>You can carry short moments on program.</em></div>
+    <div><small>MONTH 2</small><b>Handheld</b><span>The bounce, the gimbal walk, wrap-arounds. Soundcheck first, then live.</span><em>Handheld during worship in your zone.</em></div>
+    <div><small>MONTH 3+</small><b>A-operator</b><span>Three-in-ones, whips on the beat, matching the singer, one-take shots.</span><em>The Camera Director holds on you and trusts you with it.</em></div>
+  </div>
+  <div class="note">
+    <p class="lbl">ACCELERATORS</p>
+    <p>Soundcheck is the gym. Prayer-week nights are bootcamp: seven full-band services build operators faster than anything. Fifteen minutes of studying the clips in Part 8 each week adds up fast.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Built from the entries on the Camera Training Board. Frames and clips are from our own stream.</p>
+  <p>Draft ownership lines for CAM 1 and CAM 2 are marked in orange until they&rsquo;re confirmed.</p>
+</footer>
+
+</div>
+</main>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Enlarged frame">
+  <button type="button" id="lbClose" aria-label="Close">&times;</button>
+  <img id="lbImg" alt="">
+  <p id="lbCap"></p>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  /* ---------- camera tabs, routed on #cam1 ... #cam6 ---------- */
+  var tabs=[].slice.call(document.querySelectorAll('[role="tab"]'));
+  function pick(n, focus){
+    tabs.forEach(function(t){
+      var on = t.getAttribute("data-cam")===String(n);
+      t.setAttribute("aria-selected", on?"true":"false");
+      t.tabIndex = on?0:-1;
+      document.getElementById("panel-cam"+t.getAttribute("data-cam")).hidden=!on;
+      if(on && focus) t.focus();
+    });
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener("click",function(){
+      var n=t.getAttribute("data-cam");
+      pick(n,false);
+      if(location.hash!=="#cam"+n) location.hash="cam"+n;
+    });
+    t.addEventListener("keydown",function(e){
+      var d = e.key==="ArrowRight"?1 : e.key==="ArrowLeft"?-1 : 0;
+      if(!d) return;
+      e.preventDefault();
+      var nx=tabs[(i+d+tabs.length)%tabs.length];
+      pick(nx.getAttribute("data-cam"),true);
+    });
+  });
+  function route(scroll){
+    var m=/^#cam([1-6])$/.exec(location.hash||"");
+    if(!m) return;
+    pick(m[1],false);
+    if(scroll){
+      var s=document.getElementById("cameras");
+      if(s) s.scrollIntoView();
+    }
+  }
+  route(true);
+  window.addEventListener("hashchange",function(){ route(false); });
+
+  /* ---------- section rail highlight ---------- */
+  var links=[].slice.call(document.querySelectorAll(".rail a"));
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        links.forEach(function(a){ a.classList.toggle("on", a.getAttribute("href")==="#"+e.target.id); });
+      });
+    },{rootMargin:"-40% 0px -55% 0px"});
+    [].forEach.call(document.querySelectorAll(".part"),function(s){ io.observe(s); });
+  }
+
+  /* ---------- lightbox ---------- */
+  var lb=document.getElementById("lb"), li=document.getElementById("lbImg"),
+      lc=document.getElementById("lbCap"), lx=document.getElementById("lbClose"), back=null;
+  function openLb(btn){
+    var fc=btn.closest("figure") && btn.closest("figure").querySelector("figcaption");
+    var cap=fc ? fc.textContent : (btn.getAttribute("data-cap")||"");
+    back=btn; li.src=btn.getAttribute("data-src"); li.alt=cap;
+    lc.textContent=cap; lb.hidden=false; lx.focus();
+  }
+  function closeLb(){ lb.hidden=true; li.removeAttribute("src"); if(back) back.focus(); }
+  document.addEventListener("click",function(e){
+    var z=e.target.closest && e.target.closest(".zoom");
+    if(z){ openLb(z); return; }
+    if(!lb.hidden && (e.target===lb || e.target===lx)) closeLb();
+  });
+  document.addEventListener("keydown",function(e){ if(e.key==="Escape" && !lb.hidden) closeLb(); });
+})();
+</script>
+</body>
+</html>
